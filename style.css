@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  font-family: "Manrope", sans-serif;
+  font-family: 'Manrope', sans-serif;
   color: var(--color-light--2);
   font-weight: 400;
   line-height: 1.6;
@@ -190,7 +190,7 @@ a:visited {
 }
 
 /* MAP */
-#map {
+#maps {
   flex: 1;
   height: 100%;
   background-color: var(--color-light--1);

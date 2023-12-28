@@ -18,10 +18,27 @@ if (navigator.geolocation)
       console.log(pos);
 
       //Destructuring ---> creates a variable out of the coords objects
+
       const { latitude } = pos.coords;
       const { longitude } = pos.coords;
       console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
+
+      //code to show the map and the current location
+
+      const coords = [latitude, longitude];
+      const map = L.map('maps').setView(coords, 15);
+
+      L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      L.marker(coords)
+        .addTo(map)
+        .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+        .openPopup();
     },
+
     /*Error Function*/ () => {
       alert(`Sorry! Could not get your current location`);
     }
