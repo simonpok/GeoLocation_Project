@@ -64,7 +64,8 @@ const inputElevation = document.querySelector('.form__input--elevation');
 class App {
   #map;
   #mapEvent;
-  #workout = [];
+  #workouts = [];
+  // #workouts;
   constructor() {
     this._getPosition();
 
@@ -72,6 +73,8 @@ class App {
 
     //changes Elevation and Cadence according to The types
     inputType.addEventListener('change', this._toggleElevationField);
+
+    containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
 
   _getPosition() {
@@ -181,7 +184,7 @@ class App {
     }
 
     //Add new object to workout array
-    this.#workout.push(workout);
+    this.#workouts.push(workout);
     console.log(workout);
 
     //Render workout on map as marker
@@ -256,6 +259,25 @@ class App {
   </div>`;
 
     form.insertAdjacentHTML('afterend', html);
+  }
+
+  _moveToPopup(e) {
+    const workoutEl = e.target.closest('.workout');
+    console.log(workoutEl);
+
+    if (!workoutEl) return;
+
+    const workout = this.#workouts.find(
+      work => work.id === workoutEl.dataset.id
+    );
+    console.log(workout);
+
+    this.#map.setView(workout.coords, 16, {
+      animate: true,
+      pan: {
+        duration: 1,
+      },
+    });
   }
 }
 
