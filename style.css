@@ -2,7 +2,7 @@
   --color-brand--1: #ffb545;
   --color-brand--2: #00c46a;
 
-  --color-dark--1: #2d3439;
+  --color-dark--1: #045d51;
   --color-dark--2: #42484d;
   --color-light--1: #aaa;
   --color-light--2: #ececec;
@@ -50,9 +50,9 @@ a:visited {
 }
 
 .logo {
-  height: 5.2rem;
+  height: 15rem;
   align-self: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
 .workouts {
